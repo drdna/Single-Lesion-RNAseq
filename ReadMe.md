@@ -7,9 +7,10 @@ mkdir /scratch/rjwh222/RNAseq
 ```bash
 cp /pscratch/farman_uksr/*gz /scratch/rjwh222/RNAseq/
 ```
-3. Change into the RNAseq directory:
+3. Change into the RNAseq directory and create a directory to receive the alignments:
 ```bash
 cd /scratch/rjwh222/RNAseq
+mkdir alignments
 ```
 4. Align the RNAseq reads to the B71 reference genome:
 ```bash
