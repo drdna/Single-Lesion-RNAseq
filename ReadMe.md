@@ -17,7 +17,7 @@ for file in $(ls *gz); do echo "Working on dataset" $file; sbatch /project/farma
 ```
 5. Merge bamfiles for datasets that were run in duplicate (two HiSeq lanes). Duplicate runs were either performed in lanes L001 & L002, or in L003 & L008. Therefore, we can merge those datasets accordingly:
 ```bash
-for file in $(ls *L001*gz); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L001/L002}; done
-for file in $(ls *L003*gz); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L003/L008}; done
+for file in $(ls alignments/*L001*bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L001/L002}; done
+for file in $(ls alignments/*L003*bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L003/L008}; done
 ```
  
