@@ -13,7 +13,7 @@ cd /scratch/rjwh222/RNAseq
 ```
 4. Align the RNAseq reads to the B71 reference genome:
 ```bash
-for file in $(ls *gz); do echo "Working on dataset" file; sbatch /project/farman_uksr/BASH_SCRIPTS/HISAT2.sh $file; done
+for file in $(ls *gz); do echo "Working on dataset" $file; sbatch /project/farman_uksr/BASH_SCRIPTS/HISAT2.sh $file; done
 ```
 5. Merge bamfiles for datasets that were run in duplicate (two HiSeq lanes). Duplicate runs were either performed in lanes L001 & L002, or in L003 & L008. Therefore, we can merge those datasets accordingly:
 ```bash
