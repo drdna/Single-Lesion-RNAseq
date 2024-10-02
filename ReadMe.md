@@ -38,13 +38,13 @@ for file in $(ls alignments/*L001*bam); do sbatch /project/farman_uksr/BASH_SCRI
 ```
 then:
 ```bash
-for file in $(ls alignments/*L003*bam -1 | tr '\n' ' '); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L003/L008}; done
+for file in $(ls alignments/*L003*bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L003/L008}; done
 ```
 # Count reads mapping to genes that have been annotated in the B71 reference genome
 1. Make sure you are in the RNAseq directory
 2. Provide HTSeq a list of alignment files and a GFF file containing the gene annotations:
 ```bash
-infiles=$(ls alignments/*bam); sbatch /project/farman_uksr/BASH_SCRIPTS/HTSeq.sh $infiles B71GeneCounts.txt
+infiles=$(ls alignments/*bam -1 | tr '\n' ' '); sbatch /project/farman_uksr/BASH_SCRIPTS/HTSeq.sh $infiles B71GeneCounts.txt
 ```
 3. Check B71GeneCounts.txt output file after completion:
 ```bash
