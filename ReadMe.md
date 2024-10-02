@@ -32,12 +32,22 @@ squeue | grep rjwh222
 ```bash
 ls alignments
 ```
-9. When all of the alignments are finsihed, use sambamba to merge bamfiles for those datasets that were run in duplicate (i.e. on two HiSeq lanes). Duplicate runs were either performed in lanes L001 & L002, or in L003 & L008. Therefore, we can merge those datasets using these commands:
+9. When all of the alignments are finished, use sambamba to merge bamfiles for those datasets that were run in duplicate (i.e. on two HiSeq lanes). Duplicate runs were either performed in lanes L001 & L002, or in L003 & L008. Therefore, we can merge those datasets using these commands:
 ```bash
 for file in $(ls alignments/*L001*bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L001/L002}; done
 ```
 then:
 ```bash
 for file in $(ls alignments/*L003*bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L003/L008}; done
+```
+# Count reads mapping to genes that have been annotated in the B71 reference genome
+1. Make sure you are in the RNAseq directory
+2. Provide HTSeq a list of alignment files and a GFF file containing the gene annotations:
+```bash
+infiles=$(ls alignments/*bam); sbatch /project/farman_uksr/BASH_SCRIPTS/HTSeq.sh $infiles B71GeneCounts.txt
+```
+3. Check B71GeneCounts.txt output file after completion:
+```bash
+cat B71GeneCounts.txt
 ```
 
