@@ -5,7 +5,7 @@ mkdir /scratch/rjwh222/RNAseq
 ```
 2. Copy the RNAseq reads from the farman_uksr pscratch directory into the RNAseq directory:
 ```bash
-cp /pscratch/farman_uksr/*gz /scratch/rjwh222/RNAseq/
+cp /pscratch/farman_uksr/SINGLE_LESIONs/FASTQ/*gz /scratch/rjwh222/RNAseq/
 ```
 3. Change into the RNAseq directory and create a directory to receive the alignments:
 ```bash
