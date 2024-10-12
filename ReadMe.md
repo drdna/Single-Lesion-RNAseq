@@ -19,7 +19,7 @@ cat /project/farman_uksr/BASH_SCRIPTS/hisat2.sh
 ```bash
 for file in $(ls *gz); do echo "Working on dataset" $file; sbatch /project/farman_uksr/BASH_SCRIPTS/hisat2.sh /project/farman_uksr/B71v2sh_index/B71v2sh $file; done
 ```
-Note: the available indexes are in the following directories in the /project/farman_uksr directory: B71v2sh_index/B71v2sh; Osativa_index/Osativa; Pi9_BAC_index/Pi9_BAC; and AvrGenes_index_AvrGenes
+### Note: the available indexes are in the following directories in the /project/farman_uksr directory: B71v2sh_index/B71v2sh; Osativa_index/Osativa; Pi9_BAC_index/Pi9_BAC; and AvrGenes_index_AvrGenes
 The script will generate an output directory inside the current working directory (eg. B71v2sh_alignments). Inside this directory, it will name the alignments and summary files using the formats: DatasetID_ReferenceID_accepted_hits.bam and DatasetID_ReferenceID_summary.txt
 6. Check progress of scripts periodically to make sure that all have been completed. Running scripts can be listed using the following command. When all are completed the list will be empty.
 ```bash
@@ -43,7 +43,7 @@ for file in $(ls alignments/*L003*bam); do sbatch /project/farman_uksr/BASH_SCRI
 ```bash
 infiles=$(ls B71v2sh_alignments/*bam -1 | tr '\n' ' '); sbatch /project/farman_uksr/BASH_SCRIPTS/HTSeq.sh $infiles /project/farman_uksr/B71Ref2.gff B71GeneCounts.txt
 ```
-Note: the relevant gff files are inside the /project/farman_uksr directory: B71Ref2.gff OsativaRefSeq.gff Pi9_BAC.gff AvrGenes.gff
+### Note: the relevant gff files are inside the /project/farman_uksr directory: B71Ref2.gff OsativaRefSeq.gff Pi9_BAC.gff AvrGenes.gff
 3. Check B71GeneCounts.txt output file after completion:
 ```bash
 cat B71GeneCounts.txt
