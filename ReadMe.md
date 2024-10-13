@@ -17,7 +17,7 @@ cat /project/farman_uksr/BASH_SCRIPTS/hisat2.sh
 ```
 5. Use HISAT2 to align the RNAseq reads to the B71 reference genome:
 ```bash
-for file in $(ls *gz); do echo "Working on dataset" $file; sbatch /project/farman_uksr/BASH_SCRIPTS/hisat2.sh /project/farman_uksr/B71v2sh_index/B71v2sh $file; done
+for file in $(ls *gz); do echo "Working on dataset" $file; sbatch /project/farman_uksr/BASH_SCRIPTS/hisat2.sh  $file /project/farman_uksr/B71v2sh_index/B71v2sh; done
 ```
 #### Note: the available indexes are in the following directories in the /project/farman_uksr directory: B71v2sh_index/B71v2sh; Osativa_index/Osativa; Pi9_BAC_index/Pi9_BAC; and AvrGenes_index_AvrGenes
 The script will generate an output directory inside the current working directory (eg. B71v2sh_alignments). Inside this directory, it will name the alignments and summary files using the formats: DatasetID_ReferenceID_accepted_hits.bam and DatasetID_ReferenceID_summary.txt
