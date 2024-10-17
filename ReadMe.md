@@ -1,7 +1,7 @@
 # Map T16 reads to the SSID116 reference genome
 1. Create a bowtie index of the SSID116 genome:
 ```bash
-singularity run --app bowtie235sralinux /share/singularity/images/ccs/conda/amd-conda4-centos8.sinf bowtie2-build /project/farman_uksr/SSID116_index/SSID116_nh.fasta /project/farman_uksr/SSID116_index/SSID116
+singularity run --app bowtie235sralinux /share/singularity/images/ccs/conda/amd-conda4-centos8.sinf bowtie2-build /project/farman_uksr/SSID116_index/SSID116.fasta /project/farman_uksr/SSID116_index/SSID116
 ```
 2. Align reads to the reference:
 ```bash
