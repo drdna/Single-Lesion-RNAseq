@@ -1,3 +1,21 @@
+# Map T16 reads to the SSID116 reference genome
+1. Create a bowtie index of the SSID116 genome:
+```bash
+singularity run --app bowtie235sralinux /share/singularity/images/ccs/conda/amd-conda4-centos8.sinf bowtie2-build /project/farman_uksr/SSID116_index/SSID116_nh.fasta /project/farman_uksr/SSID116_index/SSID116
+```
+2. Align reads to the reference:
+```bash
+sbatch /project/farman_uksr/BASH_SCRIPTS/BWT2-GATK.sh SSID116 /project/farman_uksr T16
+```
+3. Assess genome coverage:
+```bash
+singularity run --app bedtools2300 /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf bedtools genomecov -bam SSID116_T16_ALIGN/accepted_hits_sortedRG.bam -bga
+```
+4. Extract genome regions with zero coverage:
+```bash
+grep -w 0$
+```
+
 # Map RNAseq reads to the B71 reference genome
 1. Create a directory named RNAseq in the /scratch/ directory on MCC:
 ```bash
