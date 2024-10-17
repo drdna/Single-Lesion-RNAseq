@@ -9,7 +9,7 @@ sbatch /project/farman_uksr/BASH_SCRIPTS/BWT2-GATK.sh SSID116 /project/farman_uk
 ```
 3. Assess genome coverage:
 ```bash
-singularity run --app bedtools2300 /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf bedtools genomecov -bam SSID116_T16_ALIGN/accepted_hits_sortedRG.bam -bga > T16_genomecov.bed
+singularity run --app bedtools2300 /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf bedtools genomecov -ibam SSID116_T16_ALIGN/accepted_hits_sortedRG.bam -bga > T16_genomecov.bed
 ```
 4. Extract genome regions with zero coverage spanning 2 kb or more:
 ```bash
