@@ -105,7 +105,7 @@ filtered_df <- dfcollated[grepl(pattern_list, dfcollated$prefix), ]
 ```
 # Retrieve list of secreted proteins from B71 gff file
 ```bash
-grep secrete  B71Ref2.gff -i | awk -F 'ID=|;' '{print $2}' | sort | uniq | tr "\n" ',' > SecretedProteins.txt
+grep secrete  B71Ref2.gff -i | grep -v TransMembrane | awk -F 'ID=|;' '{print $2}' | sort | uniq | tr "\n" ',' > SecretedProteins.txt
 ```
 
 
