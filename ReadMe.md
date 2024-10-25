@@ -95,3 +95,13 @@ df <- read.table("~/B71counts.txt", row.names=1, header=TRUE)
 df$prefix = gsub(".exon.*", "", rownames(df))
 dfcollated <- df %>% group_by(prefix) %>% summarise(across(everything(), sum, na.rm = TRUE))
 ```
+# Build lists of genes to query
+Refer to slides from IRBC07 meeting and find names of housekeeping genes. Use grep to search for the corresponding B71d_011855 identifiers in the B71Ref2.gff3 file
+# Filter dataframe to retrieve rows for the genes of interest
+```bash
+gene_list <- c("B71d_008098", "B71d_008099")
+pattern_list <- paste0("\\b(", paste(gene_list, collapse = "|"), ")\\b")
+filtered_df <- dfcollated[grepl(pattern_list, dfcollated$prefix), ]
+```
+
+
