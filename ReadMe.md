@@ -68,23 +68,25 @@ cat B71GeneCounts.txt
 ```
 # Combine read counts for exons from same gene
 The counts file may look something like this:
-B71d_011844-T1.exon1|3|2
-B71d_011844-T1.exon2|9|5
-B71d_011845-T1.exon2	1	1
-B71d_011845-T1.exon3	1	5
-B71d_011845-T1.exon4	2	2
-B71d_011846-T1.exon1	65	25
-B71d_011846-T1.exon2	56	38
-B71d_011847-T1.exon1	2	0
-B71d_011855-T1.exon2	3	4
-B71d_011855-T1.exon3	3	1
-B71d_011864-T1.exon1	6	1
-B71d_011864-T1.exon2	11	6
-B71d_011864-T1.exon3	8	4
-B71d_011871-T1.exon1	2	0
-B71d_011875-T1.exon1	1	1
-B71d_011878-T1.exon1	1	1
-B71d_011884-T1.exon1	4	2
+| Gene                     | Value 1 | Value 2 |
+|--------------------------|---------|---------|
+| B71d_011844-T1.exon1    | 3       | 2       |
+| B71d_011844-T1.exon2    | 9       | 5       |
+| B71d_011845-T1.exon2    | 1       | 1       |
+| B71d_011845-T1.exon3    | 1       | 5       |
+| B71d_011845-T1.exon4    | 2       | 2       |
+| B71d_011846-T1.exon1    | 65      | 25      |
+| B71d_011846-T1.exon2    | 56      | 38      |
+| B71d_011847-T1.exon1    | 2       | 0       |
+| B71d_011855-T1.exon2    | 3       | 4       |
+| B71d_011855-T1.exon3    | 3       | 1       |
+| B71d_011864-T1.exon1    | 6       | 1       |
+| B71d_011864-T1.exon2    | 11      | 6       |
+| B71d_011864-T1.exon3    | 8       | 4       |
+| B71d_011871-T1.exon1    | 2       | 0       |
+| B71d_011875-T1.exon1    | 1       | 1       |
+| B71d_011878-T1.exon1    | 1       | 1       |
+| B71d_011884-T1.exon1    | 4       | 2       |
 To summ counts by gene (and not exon), we need to combine dataframe rows. One way to do this is to use gsub to remove the suffix from the exon entries and store this in a new column name "prefix." Then one can sum rows that have the same value in the prefix column.
 ```bash
 library(dplyr)
