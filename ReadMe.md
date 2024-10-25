@@ -87,6 +87,7 @@ The counts file may look something like this:
 | B71d_011875-T1.exon1    | 1       | 1       |
 | B71d_011878-T1.exon1    | 1       | 1       |
 | B71d_011884-T1.exon1    | 4       | 2       |
+
 To summ counts by gene (and not exon), we need to combine dataframe rows. One way to do this is to use gsub to remove the suffix from the exon entries and store this in a new column name "prefix." Then one can sum rows that have the same value in the prefix column.
 ```bash
 library(dplyr)
