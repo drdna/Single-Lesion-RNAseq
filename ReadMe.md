@@ -55,6 +55,24 @@ then:
 ```bash
 for file in $(ls alignments/*L003*bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L003/L008}; done
 ```
+# Map reads to transcripts
+1. Create a directory named transcripts:
+```bash
+mkdir transcripts
+```
+2. Run stringtie to map reads to features on gff file:
+```bash
+for f in `ls AvrGenes_alignments/*bam`; do sbatch stringtie.sh $f /project/farman_uksr/AvrGenes.gff; done
+```
+# Merge transcripts from different assemblies
+1. Create a list of paths to the newly created gtf files:
+```bash
+ls transcripts/*gtf > transcript_assemblies.txt
+```
+2. Run stringtie-merge on resulting gtf files:
+```bash
+sbatch stringtie-merge.sh path/to/AvrGenes.gff path/to/transcript_assemblies.txt merged-transcripts.gtf
+```
 # Count reads mapping to genes that have been annotated in the B71 reference genome
 1. Make sure you are in the RNAseq directory
 2. Provide HTSeq a list of alignment files and a GFF file containing the gene annotations:
