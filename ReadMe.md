@@ -58,11 +58,11 @@ rm alignments/*hits.bam
 ```
 10. When all of the alignments are finished, use sambamba to merge bamfiles for those datasets that were run in duplicate (i.e. on two HiSeq lanes). Duplicate runs were either performed in lanes L001 & L002, or in L003 & L008. Therefore, we can merge those datasets using these commands:
 ```bash
-for file in $(ls alignments/*L001*_noUnal.bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L001/L002}; done
+for file in $(ls alignments/*L001*_noUnal.bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/sambamba-merge.sh $file ${file/L001/L002}; done
 ```
 then:
 ```bash
-for file in $(ls alignments/*L003*bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L003/L008}; done
+for file in $(ls alignments/*L003*bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/sambamba-merge.sh $file ${file/L003/L008}; done
 ```
 # Map reads to transcripts
 1. Create a directory named transcripts:
