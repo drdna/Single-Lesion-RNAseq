@@ -47,9 +47,17 @@ squeue | grep rjwh222
 ```bash
 ls alignments
 ```
-8. When all of the alignments are finished, use sambamba to merge bamfiles for those datasets that were run in duplicate (i.e. on two HiSeq lanes). Duplicate runs were either performed in lanes L001 & L002, or in L003 & L008. Therefore, we can merge those datasets using these commands:
+8. If needed, filter bamfiles to remove entries for reads that did not align to the relevant references:
 ```bash
-for file in $(ls alignments/*L001*bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L001/L002}; done
+for f in `ls alignments/*bam`; do sbatch NoUnaligned.sh $f; done
+```
+9. After checking for successful completion of the NoUnaligned.sh script (using samtools view), delete the original bamfiles:
+```bash
+rm alignments/*hits.bam
+```
+10. When all of the alignments are finished, use sambamba to merge bamfiles for those datasets that were run in duplicate (i.e. on two HiSeq lanes). Duplicate runs were either performed in lanes L001 & L002, or in L003 & L008. Therefore, we can merge those datasets using these commands:
+```bash
+for file in $(ls alignments/*L001*_noUnal.bam); do sbatch /project/farman_uksr/BASH_SCRIPTS/Sambamba-merge.sh $file ${file/L001/L002}; done
 ```
 then:
 ```bash
