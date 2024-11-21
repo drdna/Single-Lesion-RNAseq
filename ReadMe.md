@@ -83,6 +83,10 @@ ls transcripts/*gtf > transcript_assemblies.txt
 sbatch stringtie-merge.sh path/to/AvrGenes.gff path/to/transcript_assemblies.txt merged-transcripts.gtf
 ```
 The merge gtf file will have refined coordinates for the various transcripts.
+# Merge bamfiles from different RNAseq samples
+```bash
+infiles=$(ls SampleCultivarDir/*bam | tr '\n' ' '); singularity run --app sambamba082 /share/singularity/images/ccs/conda/amd-conda5-rocky8.sinf sambamba merge mergedfiles.bam $infiles
+```
 # Count reads mapping to genes that have been annotated in the B71 reference genome
 1. Make sure you are in the RNAseq directory
 2. Provide HTSeq a list of alignment files and a GFF file containing the gene annotations:
